@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Agende seu horário na BarberPro.">
+  <title>BarberPro | Agendamento</title>
+  <link rel="icon" type="image/png" href="assets/logoexemplo.png">
+  <link rel="apple-touch-icon" href="assets/logoexemplo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#" class="brand" aria-label="Início">
+      <div class="logo-placeholder">
+        <img src="assets/logoexemplo.png" alt="Logo da barbearia">
+      </div>
+      <div class="brand-info">
+        <strong id="brandName">BARBERPRO</strong>
+        <span>BARBEARIA PREMIUM</span>
+      </div>
+    </a>
+    <button class="outline-button" id="openSettings" type="button">⚙ Personalizar</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">ESTILO • PRECISÃO • IDENTIDADE</span>
+        <h1>SEU ESTILO.<br><span>SUA IDENTIDADE.</span></h1>
+        <p>Seu próximo corte começa aqui. Escolha o serviço, encontre seu horário e agende em poucos passos.</p>
+        <a class="primary-button hero-button" href="#agendamento">AGENDAR HORÁRIO <span>↗</span></a>
+        <div class="hero-note"><span class="status-dot"></span> AGENDAMENTO ONLINE</div>
+      </div>
+      <div class="hero-decoration" aria-hidden="true">
+        <span>BP</span>
+        <div class="decoration-line"></div>
+        <small>BARBER<br>STUDIO</small>
+      </div>
+    </section>
+
+    <section class="services-section" id="servicos">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">NOSSO MENU</span>
+          <h2>SERVIÇOS <span>EM DESTAQUE</span></h2>
+          <p>Encontre o atendimento ideal para você.</p>
+        </div>
+        <span class="heading-mark">01 / 02</span>
+      </div>
+      <div class="service-showcase" id="serviceShowcase"></div>
+    </section>
+
+    <section class="booking-section" id="agendamento">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">RÁPIDO E PRÁTICO</span>
+          <h2>AGENDE SEU <span>HORÁRIO</span></h2>
+          <p>Reserve seu atendimento em poucos passos.</p>
+        </div>
+        <span class="heading-mark">02 / 02</span>
+      </div>
+
+      <div class="booking-layout">
+        <div class="booking-main">
+          <div class="progress-track" id="progressTrack">
+            <div class="progress-step active" data-progress="1"><span>1</span><small>Serviço</small></div>
+            <div class="progress-step" data-progress="2"><span>2</span><small>Profissional</small></div>
+            <div class="progress-step" data-progress="3"><span>3</span><small>Data</small></div>
+            <div class="progress-step" data-progress="4"><span>4</span><small>Horário</small></div>
+            <div class="progress-step" data-progress="5"><span>5</span><small>Dados</small></div>
+          </div>
+
+          <div class="booking-card">
+            <div class="step-panel active" data-step="1">
+              <div class="step-heading">
+                <span class="step-number">1</span>
+                <div><h3>ESCOLHA O SERVIÇO</h3><p>O que vamos fazer hoje?</p></div>
+              </div>
+              <div class="service-options" id="serviceOptions"></div>
+            </div>
+
+            <!-- Esta etapa é removida automaticamente pelo script.js -->
+            <div class="step-panel" data-step="2">
+              <div class="step-heading"><h3>PROFISSIONAL</h3></div>
+            </div>
+
+            <div class="step-panel" data-step="3">
+              <div class="step-heading">
+                <span class="step-number">2</span>
+                <div><h3>ESCOLHA A DATA</h3><p>Selecione o dia do seu atendimento.</p></div>
+              </div>
+              <label class="field-label" for="bookingDate">Data do agendamento</label>
+              <input class="form-control" type="date" id="bookingDate" required>
+              <p class="date-hint" id="dateHint">Escolha uma data para continuar.</p>
+            </div>
+
+            <div class="step-panel" data-step="4">
+              <div class="step-heading">
+                <span class="step-number">3</span>
+                <div><h3>ESCOLHA O HORÁRIO</h3><p>Os horários disponíveis aparecem abaixo.</p></div>
+              </div>
+              <p class="available-hint" id="availableHint">Selecione um horário disponível.</p>
+              <div class="time-options" id="timeOptions"></div>
+            </div>
+
+            <div class="step-panel" data-step="5">
+              <div class="step-heading">
+                <span class="step-number">4</span>
+                <div><h3>SEUS DADOS</h3><p>Precisamos de algumas informações para solicitar seu agendamento.</p></div>
+              </div>
+              <form id="customerForm">
+                <div class="form-group">
+                  <label class="field-label" for="customerName">Nome completo</label>
+                  <input class="form-control" id="customerName" type="text" placeholder="Digite seu nome" autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                  <label class="field-label" for="customerPhone">WhatsApp com DDD</label>
+                  <input class="form-control" id="customerPhone" type="tel" placeholder="(64) 99999-9999" autocomplete="tel" required>
+                </div>
+                <div class="form-group">
+                  <label class="field-label" for="customerNotes">Observações (opcional)</label>
+                  <textarea class="form-control" id="customerNotes" rows="3" placeholder="Alguma preferência ou informação?"></textarea>
+                </div>
+                <label class="privacy-label">
+                  <input type="checkbox" id="privacyConsent" required>
+                  <span>Autorizo o uso dos meus dados para tratar deste agendamento.</span>
+                </label>
+                <button class="primary-button form-submit" type="submit">REVISAR AGENDAMENTO ↗</button>
+              </form>
+            </div>
+
+            <div class="step-panel" data-step="6">
+              <div class="step-heading">
+                <span class="step-number">✓</span>
+                <div><h3>CONFIRA SEU AGENDAMENTO</h3><p>Revise os dados antes de enviar a solicitação.</p></div>
+              </div>
+              <div class="final-summary" id="finalSummary"></div>
+              <p class="secure-note">Ao continuar, você enviará uma solicitação pelo WhatsApp da barbearia. O horário ainda precisa ser confirmado.</p>
+              <button class="primary-button form-submit" type="button" id="confirmBooking">SOLICITAR PELO WHATSAPP ↗</button>
+            </div>
+
+            <div class="booking-error" id="bookingError" role="alert"></div>
+
+            <div class="booking-actions" id="bookingActions">
+              <button class="secondary-button" id="backStep" type="button" disabled>← VOLTAR</button>
+              <button class="primary-button" id="nextStep" type="button">CONTINUAR →</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="booking-summary">
+          <span class="eyebrow">SEU RESUMO</span>
+          <h3>Seu atendimento</h3>
+          <div class="summary-empty" id="summaryEmpty">
+            <span class="summary-icon">✂</span>
+            <p>Selecione um serviço para começar seu agendamento.</p>
+          </div>
+          <div class="summary-details" id="summaryDetails"></div>
+          <div class="summary-total">
+            <span>Valor do serviço</span>
+            <strong id="summaryPrice">R$ 0,00</strong>
+          </div>
+          <p class="summary-disclaimer">O agendamento será confirmado pela barbearia.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-main">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-box"><img src="assets/logoexemplo.png" alt="Logo da barbearia"></div>
+        <span class="footer-brand-name" id="footerBrandName">BARBERPRO<span>PRO</span></span>
+      </a>
+      <p>Estilo, cuidado e precisão em cada detalhe.</p>
+      <p class="footer-address" id="footerAddress"></p>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footerYear"></span> <span id="footerCopyrightName">BARBERPRO</span>. Todos os direitos reservados.</span>
+      <span>Desenvolvido por <strong>PontoDigital®</strong></span>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="settingsModal" aria-hidden="true">
+    <section class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="settings-header">
+        <div><span class="eyebrow">CONFIGURAÇÕES</span><h2 id="settingsTitle">PERSONALIZE O SITE</h2></div>
+        <button class="modal-close" id="closeSettings" type="button" aria-label="Fechar">×</button>
+      </div>
+      <form id="settingsForm">
+        <div class="form-group">
+          <label class="field-label" for="settingName">Nome da barbearia</label>
+          <input class="form-control" id="settingName" type="text" placeholder="Ex.: BarberPro">
+        </div>
+        <div class="form-group">
+          <label class="field-label" for="settingWhatsApp">WhatsApp da barbearia</label>
+          <input class="form-control" id="settingWhatsApp" type="tel" placeholder="5564999999999">
+          <small class="field-help">Inclua o código do país e o DDD. Ex.: 5564999999999.</small>
+        </div>
+        <div class="form-group">
+          <label class="field-label" for="settingAddress">Endereço</label>
+          <input class="form-control" id="settingAddress" type="text" placeholder="Endereço da barbearia">
+        </div>
+        <div class="form-group">
+          <label class="field-label" for="settingLogo">Alterar logo (opcional)</label>
+          <input class="form-control file-control" id="settingLogo" type="file" accept="image/*">
+          <small class="field-help">A imagem será salva neste navegador. Máximo de 1 MB.</small>
+        </div>
+        <button class="primary-button form-submit" type="submit">SALVAR CONFIGURAÇÕES</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
