@@ -298,7 +298,7 @@ if (!Array.isArray(services) || !services.length) {
 }
 
 let currentStep = 1;
-let selectedServiceCategory = "Todos";
+let selectedServiceCategory = "Cabelo";
 
 let booking = {
   service: null,
@@ -626,15 +626,15 @@ function renderServiceOptions() {
   const container = $("#serviceOptions");
   if (!container) return;
 
-  const categories = [
-    "Todos",
+    const categories = [
     "Cabelo",
     "Barba",
     "Pigmentação",
     "Acabamento",
     "Tratamentos",
-    "Combos"
-  ];
+    "Combos",
+    "Todos"
+    ];
 
   const visibleServices =
     selectedServiceCategory === "Todos"
